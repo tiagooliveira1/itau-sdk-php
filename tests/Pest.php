@@ -52,7 +52,7 @@ use GuzzleHttp\Psr7\Response;
 use Itau\Models\Settings;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+$dotenv->safeLoad();
 
 function getBoletoParam()
 {

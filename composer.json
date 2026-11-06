@@ -1,5 +1,5 @@
 {
-    "name": "matfatjoe/itau-sdk-php",
+    "name": "tiagooliveira1/itau-sdk-php",
     "type": "library",
     "description": "Biblioteca para ",
     "homepage": "https://www.linkedin.com/in/yago-fernandes",
@@ -22,13 +22,12 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.0",
-        "nesbot/carbon": "^1.26.3 || ^2.0",
-        "symfony/serializer": "^5.0",
-        "symfony/property-access": "^5.0",
-        "league/flysystem": "^1.0",
-        "guzzlehttp/guzzle": "^7.9",
-        "tightenco/collect": "^9.16"
+        "php": ">=8.2",
+        "nesbot/carbon": "^1.26.3 || ^2.0 || ^3.0",
+        "symfony/serializer": "^5.0|^6.0|^7.0",
+        "symfony/property-access": "^5.0|^6.0|^7.0",
+        "league/flysystem": "^1.0|^3.0",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.0",
@@ -44,5 +43,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "replace": {
+        "matfatjoe/itau-sdk-php": "self.version"
     }
 }
