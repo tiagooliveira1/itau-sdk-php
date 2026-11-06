@@ -108,9 +108,9 @@ class Factory extends Client
         return $this->call('GET', $endpoint, $this->token->access_token, $filters);
     }
 
-    public function getFrancesasMovimentacao($endpoint, $filters)
+    public function getBoletos($endpoint, $filters)
     {
-        $this->setUrl(4);
+        $this->setUrl(5);
         return $this->call('GET', $endpoint, $this->token->access_token, $filters);
     }
 

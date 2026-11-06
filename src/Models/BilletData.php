@@ -181,20 +181,20 @@ class BilletData
             $this->multa->build($billet['fine']);
         }
 
-        if (isset($billet['discount'])) {
+        if (isset($data['discount'])) {
             $this->desconto = new Discount();
-            $this->desconto->build($billet['discount']);
+            $this->desconto->build($data['discount']);
         }
 
-        if (isset($billet['billing_message_list'])) {
+        if (isset($data['billing_message_list'])) {
             $this->lista_mensagem_cobranca = [];
-            foreach ($billet['billing_message_list'] as $key => $message) {
+            foreach ($data['billing_message_list'] as $key => $message) {
                 $this->lista_mensagem_cobranca[$key] = new BillingMessageList();
                 $this->lista_mensagem_cobranca[$key]->mensagem = $message;
             }
         }
 
-        if (isset($billet['divergent_receipt'])) {
+        if (isset($data['divergent_receipt'])) {
             $this->recebimento_divergente = new DivergentReceipt();
             $this->recebimento_divergente->codigo_tipo_autorizacao = $billet['divergent_receipt']['code'];
         }

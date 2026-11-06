@@ -135,7 +135,10 @@ class Client
                 $this->url = 'https://secure.api.itau/pix_recebimentos/v2/';
                 break;
             case 4:
-                $this->url = 'https://boletos.cloud.itau.com.br/boletos/v3/';
+                $this->url = 'https://boleto.api.itau.com/extrato/v1/';
+                break;
+            case 5:
+                $this->url = 'https://boleto.api.itau.com/boleto/v1/';
                 break;
         }
     }
