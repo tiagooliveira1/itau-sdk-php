@@ -13,7 +13,6 @@ use KryptonPay\Api\ApiContext;
 use Itau\Models\Response;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Tightenco\Collect\Support\Collection;
 
 class Client
 {
@@ -109,16 +108,23 @@ class Client
             return $item;
         }
 
-        return (new Collection($item))
-            ->reject(function ($item) {
-                return null === $item;
-            })
-            ->flatMap(function ($item, $key) {
-                return is_numeric($key)
-                    ? [self::arrayRemoveNull($item)]
-                    : [$key => self::arrayRemoveNull($item)];
-            })
-            ->toArray();
+        // Remove apenas valores null (0, '' e false são mantidos), de forma recursiva.
+        // Chaves numéricas são reindexadas e chaves texto preservadas.
+        $result = [];
+        foreach ($item as $key => $value) {
+            if (null === $value) {
+                continue;
+            }
+
+            if (is_numeric($key)) {
+                $result[] = self::arrayRemoveNull($value);
+                continue;
+            }
+
+            $result[$key] = self::arrayRemoveNull($value);
+        }
+
+        return $result;
     }
 
     protected function setUrl($type)
